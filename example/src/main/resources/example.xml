@@ -1,0 +1,35 @@
+<aa:config xmlns:aa="http://transfer">
+
+
+    <transfer sqlBefore="appleSqlBefore" sqlAfter="bananaSqlAfter">
+        <fromTable tableName="old_product"/>
+        <toTable tableName="new_product">
+            <keyMatchRoles>
+                <keyMatch fromKey="id" toKey="product_code" keyConverter="productIdConverter" isNumber="false"/>
+            </keyMatchRoles>
+            <matchFields>
+                <matchField from="name" to="name" fieldConverter="productNameConverter" isNumber="false"/>
+                <matchField from="price" to="price" fieldConverter="sameConverter" isNumber="true"/>
+            </matchFields>
+            <defaultFields>
+                <defaultField fieldName="area" isNumber="false" defaultValue="北京"/>
+            </defaultFields>
+        </toTable>
+    </transfer>
+
+    <transfer sqlBefore="appleSqlBefore" sqlAfter="">
+        <fromTable tableName="old_product"/>
+        <toTable tableName="new_product_category">
+            <keyMatchRoles>
+                <keyMatch fromKey="id" toKey="product_code" keyConverter="productIdConverter" isNumber="false"/>
+            </keyMatchRoles>
+            <matchFields>
+                <matchField from="category" to="category" fieldConverter="sameConverter" isNumber="false"/>
+            </matchFields>
+            <defaultFields>
+            </defaultFields>
+        </toTable>
+    </transfer>
+
+
+</aa:config>

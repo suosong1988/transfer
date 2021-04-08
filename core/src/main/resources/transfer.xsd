@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://transfer">
+
+
+    <xs:element name="config">
+
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:element name="transfer">
+                    <xs:complexType>
+                        <xs:sequence maxOccurs="unbounded">
+                            <xs:element name="fromTable">
+                                <xs:complexType>
+                                    <xs:attribute name="tableName" type="xs:string" use="required"></xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="toTable">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="keyMatchRoles">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="keyMatch" maxOccurs="3" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="fromKey" type="xs:string"
+                                                                          use="required"></xs:attribute>
+                                                            <xs:attribute name="toKey" type="xs:string"
+                                                                          use="required"></xs:attribute>
+                                                            <xs:attribute name="keyConverter" type="xs:string"
+                                                                          use="required"></xs:attribute>
+                                                            <xs:attribute name="isNumber" type="xs:boolean"
+                                                                          use="required"></xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="matchFields">
+                                            <xs:complexType>
+                                                <xs:sequence maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:element name="matchField">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="from" type="xs:string"
+                                                                          use="required"></xs:attribute>
+                                                            <xs:attribute name="to" type="xs:string"
+                                                                          use="required"></xs:attribute>
+                                                            <xs:attribute name="fieldConverter" type="xs:string"
+                                                                          use="required"></xs:attribute>
+                                                            <xs:attribute name="isNumber" type="xs:boolean"
+                                                                          use="required"></xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="defaultFields">
+                                            <xs:complexType>
+                                                <xs:sequence maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:element name="defaultField">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="fieldName" type="xs:string"
+                                                                          use="required"></xs:attribute>
+                                                            <xs:attribute name="defaultValue" type="xs:string"></xs:attribute>
+                                                            <xs:attribute name="initDefaultValueIfNotExist" type="xs:string"
+                                                            ></xs:attribute>
+                                                            <xs:attribute name="isNumber" type="xs:boolean"
+                                                                          use="required"></xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="tableName" type="xs:string" use="required"></xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="sqlBefore" type="xs:string" use="required"></xs:attribute>
+                        <xs:attribute name="sqlAfter" type="xs:string" use="required"></xs:attribute>
+                    </xs:complexType>
+
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+
+
+    </xs:element>
+</xs:schema>

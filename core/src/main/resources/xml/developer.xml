@@ -1,0 +1,25 @@
+<aa:config xmlns:aa="http://transfer">
+
+
+    <transfer sqlBefore="sqlBeforeTest" sqlAfter="sqlAfterTest">
+        <fromTable tableName="fromTable"/>
+        <toTable tableName="toTable">
+            <keyMatchRoles>
+                <keyMatch fromKey="fromKey" toKey="toKey1" keyConverter="keyConverterTest" isNumber="false"/>
+                <keyMatch fromKey="fromKey" toKey="toKey1" keyConverter="keyConverterTest2" isNumber="false"/>
+                <keyMatch fromKey="fromKey" toKey="toKey2" keyConverter="keyConverterTest3" isNumber="false"/>
+            </keyMatchRoles>
+            <matchFields>
+                <matchField from="from" to="to" fieldConverter="fieldConverterTest" isNumber="false"/>
+            </matchFields>
+            <defaultFields>
+                <defaultField fieldName="defaultField" isNumber="false"
+                              initDefaultValueIfNotExist="initDefaultValueIfNotExistTest"/>
+                <defaultField fieldName="defaultField2" isNumber="true"
+                              defaultValue="123"/>
+            </defaultFields>
+        </toTable>
+    </transfer>
+
+
+</aa:config>
