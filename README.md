@@ -50,6 +50,7 @@ CREATE TABLE `new_product_category` (
 6，对于新产品表，增加了area字段，默认为‘北京’
 ```
 
+微信沟通：suosong1988
 
 
 
